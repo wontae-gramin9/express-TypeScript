@@ -1,4 +1,5 @@
 import express from "express";
+import { calculatorRouter, healthRouter } from "./routes";
 
 const app = express();
 const port = 3000;
@@ -7,22 +8,9 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
+app.use("/health", healthRouter);
+app.use("/calculator", calculatorRouter);
+
 app.get("/", (req, res) => {
   res.send("Hello world.");
-});
-
-app.get("/health", (req, res) => {
-  res.send("OK");
-});
-
-app.get("/calculator/:id", (req, res) => {
-  // Requset information
-  // Query is a key-value object, hence serialize
-  console.log(`Query parameter: ${JSON.stringify(req.query)}`);
-  console.log(`Headers: ${JSON.stringify(req.headers)}`);
-  console.log(`Method: ${req.method}`);
-  res
-    .status(202)
-    .header({ "X-Custom-Header": "foo", "X-Custom-Header-2": "bar" })
-    .send(`Hello ${req.params.id}`);
 });
