@@ -5,6 +5,9 @@ npm-shrinkwrap.json
 *.log
 *.gz
 
+# TypeScript transpiling
+dist
+
 # Coveralls
 .nyc_output
 coverage
