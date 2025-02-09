@@ -17,5 +17,8 @@ app.get("/:id", (req, res) => {
   console.log(`Query parameter: ${JSON.stringify(req.query)}`);
   console.log(`Headers: ${JSON.stringify(req.headers)}`);
   console.log(`Method: ${req.method}`);
-  res.status(202).send(`Hello ${req.params.id}`);
+  res
+    .status(202)
+    .header({ "X-Custom-Header": "foo", "X-Custom-Header-2": "bar" })
+    .send(`Hello ${req.params.id}`);
 });
