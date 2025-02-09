@@ -1,6 +1,9 @@
 import { Router } from "express";
+import { logger } from "../middlewares";
 
 export const router = Router();
+
+router.use(logger);
 
 router.get("/", (req, res) => {
   res.send({
