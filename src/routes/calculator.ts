@@ -5,7 +5,7 @@ export const router = Router();
 
 router.use(logger);
 
-router.get("/", (req, res) => {
+router.get("/", logger, logger, (req, res) => {
   res.send({
     message: "Get all calculations",
     data: [
