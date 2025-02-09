@@ -1,11 +1,8 @@
 import { Router } from "express";
-import { logger } from "../middlewares";
 
 export const router = Router();
 
-router.use(logger);
-
-router.get("/", logger, logger, (req, res) => {
+router.get("/", (req, res) => {
   res.send({
     message: "Get all calculations",
     data: [
