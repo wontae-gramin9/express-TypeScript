@@ -1,6 +1,6 @@
 import express from "express";
 import { calculatorRouter, healthRouter } from "./routes";
-import { addTimestamp, logger } from "./middlewares";
+import { addTimestamp, errorHandler, logger } from "./middlewares";
 
 const app = express();
 const port = 3000;
@@ -16,6 +16,8 @@ app.use("/calculator", calculatorRouter);
 app.get("/", (req, res) => {
   res.send("Hello world.");
 });
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
